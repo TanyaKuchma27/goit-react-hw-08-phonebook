@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDeleteContactMutation } from 'redux/contactsSlice';
+import { useDeleteContactMutation} from 'redux/contactsAPI';
 import { Button } from './ContactItem.styled';
 import { Spinner } from 'components/Spinner';
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useCreateContactMutation, useFetchContactsQuery } from 'redux/contactsSlice';
+import { useCreateContactMutation, useFetchContactsQuery} from 'redux/contactsAPI';
 import { Spinner } from 'components/Spinner';
 import { Form, Field, Text, Input, Button } from './ContactForm.styled';
 
@@ -27,7 +27,7 @@ export const ContactForm = () => {
     const addContact = (name, number) => {
         const normalizedName = name.toLowerCase();
 
-        if (contacts.find(contact =>
+        if (contacts && contacts.find(contact =>
             contact.name.toLowerCase() === normalizedName)) {
             toast.error(`${name} is already in contacts`);
             return;
