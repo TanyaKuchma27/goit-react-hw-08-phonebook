@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useCreateContactMutation, useFetchContactsQuery} from 'redux/contactsAPI';
 import { Spinner } from 'components/Spinner';
-import { Form, Field, Text, Input, Button } from './ContactForm.styled';
+import { FaUser, FaPhoneAlt } from 'react-icons/fa';
+import { Form, Field, Icon, Input, Button } from './ContactForm.styled';
 
 export const ContactForm = () => { 
     const [addNewContact, { isLoading }] = useCreateContactMutation();
@@ -47,21 +48,21 @@ export const ContactForm = () => {
     return (
         <Form onSubmit={handleSubmit} autoComplete="off">
             <Field>
-                <Text>Name</Text>
+                <Icon><FaUser /></Icon>
                 <Input
                     type="text"
+                    placeholder="Name"
                     name="name"
                     value={name}
                     onChange={handleNameChange}                    
-                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                     required
                 />
             </Field>
             <Field>
-                <Text>Number</Text>
+                <Icon><FaPhoneAlt /></Icon>
                 <Input
                     type="tel"
+                    placeholder="Number"
                     name="number"
                     value={number}
                     onChange={handleNumberChange}                    

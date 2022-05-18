@@ -1,5 +1,14 @@
 import styled from '@emotion/styled';
 
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Left = styled.div`
+  margin-right: 24px;
+`;
+
 export const Button = styled.button`
   margin-left: 15px;
   cursor: pointer;

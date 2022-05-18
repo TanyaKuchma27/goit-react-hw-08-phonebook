@@ -1,17 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { FaUser, FaEnvelope, FaKey } from 'react-icons/fa';
+import { Container, Title, Form, Field, Icon, Input, Button } from './view.styled';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -41,37 +32,48 @@ export default function RegisterView() {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
-
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-
-        <label style={styles.label}>
-          Почта
-          <input
+    <Container>
+      <Title>Please register</Title>
+      <Form onSubmit={handleSubmit} autoComplete="off">    
+        
+        <Field>
+          <Icon><FaUser /></Icon>
+          <Input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
+        </Field> 
+        
+        <Field>
+          <Icon><FaEnvelope /></Icon>
+          <Input
             type="email"
+            placeholder="email"
             name="email"
             value={email}
             onChange={handleChange}
+            required
           />
-        </label>
+        </Field> 
 
-        <label style={styles.label}>
-          Пароль
-          <input
+        <Field>
+          <Icon><FaKey /></Icon>
+          <Input
             type="password"
+            placeholder="password"
             name="password"
             value={password}
             onChange={handleChange}
+            required
           />
-        </label>
+        </Field>     
 
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
+        <Button type="submit">Register</Button>
+      </Form> 
+    </Container>
   );
 }

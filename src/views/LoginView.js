@@ -1,17 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { FaEnvelope, FaKey } from 'react-icons/fa';
+import { Container, Title, Form, Field, Icon, Input, Button } from './view.styled';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -37,32 +28,22 @@ export default function LoginView() {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    <Container>
+      <Title>Please login</Title>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Field>
+          <Icon><FaEnvelope /></Icon>
+          <Input type="email" placeholder="email" name="email"value={email}
+            onChange={handleChange}/>
+        </Field>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label style={styles.label}>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+        <Field>
+          <Icon><FaKey /></Icon>
+          <Input type="password" placeholder="password" name="password"value={password}
+            onChange={handleChange}/>
+        </Field> 
+        <Button type="submit">Login</Button>        
+      </Form>      
+    </Container>
   );
 }

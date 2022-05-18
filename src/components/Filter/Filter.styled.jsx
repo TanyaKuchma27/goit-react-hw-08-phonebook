@@ -1,8 +1,13 @@
 import styled from '@emotion/styled';
 
+export const Form = styled.form` 
+  width: 320px;
+  margin: 0 auto;  
+`;
+
 export const Field = styled.label`
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
   margin-bottom: 15px;
 `;
 
@@ -13,8 +18,8 @@ export const Text = styled.span`
 `;
 
 export const Input = styled.input`
-  margin-top: 4px;
-  width: 250px;
+  /* margin-top: 4px;
+  width: 250px;  
   height: 30px;
   padding-left: 10px;
   font-size: 18px;
@@ -26,5 +31,14 @@ export const Input = styled.input`
 
   :focus-within {
     border: 1px solid rgb(88, 11, 34);
+  } */
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  :focus-within {
+    border: 2px solid dodgerblue;
   }
 `;

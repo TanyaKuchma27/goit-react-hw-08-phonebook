@@ -6,3 +6,10 @@ export const Container = styled.div`
   color: rgb(51, 4, 31);
   background-color: rgb(241, 224, 235);
 `;
+
+export const Loading = styled.div`
+  margin-top: 40px;
+  text-align: center;
+  height: 100vh;
+`;
+
