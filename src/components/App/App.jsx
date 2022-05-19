@@ -30,13 +30,8 @@ export const App = () => {
       <Container>
         <AppBar />
         <Suspense fallback={<Loading><Spinner size={80}/></Loading>}>
-          <Routes>
-            <Route path="/" element={
-              <PublicRoute>
-                <HomeView />
-              </PublicRoute>
-            }
-            />
+          <Routes>            
+            <Route path="/" element={<HomeView />}/>
             <Route path="register" element={
               <PublicRoute restricted>
                 <RegisterView />
