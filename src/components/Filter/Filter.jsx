@@ -5,8 +5,7 @@ export const Filter = ({ filter, onChange }) => {
 
     return (
         <Form>
-            <Field>
-                {/* <Text>Find contacts by name</Text> */}
+            <Field>                
                 <Input
                     type="text"
                     placeholder="Find contacts by name"                

@@ -11,7 +11,7 @@ export const HomeTitle = styled.h1`
   margin-top: 200px;
   font-weight: 700;
   font-size: 48px;  
-`
+`;
 
 export const Title = styled.h2`
   margin-top: 30px;

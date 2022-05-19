@@ -11,4 +11,3 @@ export const Loading = styled.div`
   text-align: center;
   height: 100vh;
 `;
-

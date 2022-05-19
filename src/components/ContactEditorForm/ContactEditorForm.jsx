@@ -1,6 +1,6 @@
-import { FaUser, FaPhoneAlt, FaSave, FaTimes } from 'react-icons/fa';
-import { Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { Formik } from 'formik';
+import { FaUser, FaPhoneAlt, FaSave, FaTimes } from 'react-icons/fa';
 import { Forma, Label, Icon, Input, Wrapper, Button, Close } from './ContactEditorForm.styled';
 
 export const ContactEditorForm = ({

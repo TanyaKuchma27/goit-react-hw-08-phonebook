@@ -30,6 +30,7 @@ export const Input = styled(Field)`
 
   :focus-within {
     border: 2px solid dodgerblue; 
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -69,8 +70,7 @@ export const Close = styled.button`
   cursor: pointer;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1); 
-  color: dodgerblue;
-  /* background-color: #ffffff; */
+  color: dodgerblue;  
   opacity: 0.8;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
