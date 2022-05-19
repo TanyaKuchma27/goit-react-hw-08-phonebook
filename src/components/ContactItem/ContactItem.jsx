@@ -14,7 +14,7 @@ export const ContactItem = ({ id, name, number }) => {
         <Wrapper>
             <Left>
                 <FaAddressBook /> {name}:
-                <Number href="tel: {number}">{number}</Number>
+                <Number href={`tel: ${number}`}>{number}</Number>
             </Left>  
             <div>
                 <Button
