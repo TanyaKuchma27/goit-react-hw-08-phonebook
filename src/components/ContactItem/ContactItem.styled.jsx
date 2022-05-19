@@ -10,16 +10,19 @@ export const Left = styled.div`
 `;
 
 export const Button = styled.button`
-  margin-left: 15px;
+
+  margin-left: 8px;
   cursor: pointer;
-  background-color: rgb(184, 162, 174);
+  background-color: ${button => (button.name === 'delete' ? '#bb4343' : '#ecad5a')}; 
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border: transparent;
   border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  opacity: 0.8;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover,
   :focus {
-    background-color: rgb(119, 111, 116);
+    opacity: 1;
   }
 `;

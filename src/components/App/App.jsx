@@ -24,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isFetchingCurrentUser ? (
-      <h2>Loading...</h2>
+      <Loading><Spinner size={80}/></Loading>
   ) : (
        <Container>
         <AppBar />

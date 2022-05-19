@@ -1,7 +1,7 @@
 import { useFetchContactsQuery} from 'redux/contactsAPI';
 import { ContactItem } from 'components/ContactItem';
 import { Spinner } from 'components/Spinner';
-import { List, Item } from './ContactList.styled';
+import { List, Item, Text } from './ContactList.styled';
 
 export const ContactList = ({ contacts }) => {  
     const { isFetching } = useFetchContactsQuery();  
@@ -13,7 +13,7 @@ export const ContactList = ({ contacts }) => {
                 <Item key={contact.id}>
                     <ContactItem {...contact}/>                    
                 </Item>
-            ))) : (<p>Contact list is empty</p>)}
+            ))) : (<Text>Contact list is empty</Text>)}
         </List>
     )       
 }

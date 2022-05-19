@@ -4,12 +4,10 @@ import styled from '@emotion/styled';
 export const Link = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
-  font-weight: 700;
-  color: #2A363B;
-  font-size: 18px;
+  padding: 12px; 
+  color: #212121; 
 
   &.active {
-    color: #E84A5F;
+    color: #2196f3;
   }
 `;

@@ -4,10 +4,21 @@ export const Container = styled.div`
   height: 100vh;  
 `;
 
+export const HomeTitle = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+  font-weight: 700;
+  font-size: 48px;  
+`
+
 export const Title = styled.h2`
   margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
+  font-weight: 700;
+  font-size: 40px; 
 `;
 
 export const Form = styled.form` 

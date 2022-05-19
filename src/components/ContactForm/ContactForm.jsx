@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useCreateContactMutation, useFetchContactsQuery} from 'redux/contactsAPI';
 import { Spinner } from 'components/Spinner';
-import { FaUser, FaPhoneAlt } from 'react-icons/fa';
-import { Form, Field, Icon, Input, Button } from './ContactForm.styled';
+import { FaUser, FaPhoneAlt, FaPlus } from 'react-icons/fa';
+import { Form, Field, Icon, Input, Wrapper, Button } from './ContactForm.styled';
 
-export const ContactForm = () => { 
+export const ContactForm = () => {
     const [addNewContact, { isLoading }] = useCreateContactMutation();
-    const { data: contacts } = useFetchContactsQuery();  
+    const { data: contacts } = useFetchContactsQuery();
 
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -22,7 +22,7 @@ export const ContactForm = () => {
 
     const formReset = () => {
         setName('');
-        setNumber(''); 
+        setNumber('');
     }
     
     const addContact = (name, number) => {
@@ -32,7 +32,7 @@ export const ContactForm = () => {
             contact.name.toLowerCase() === normalizedName)) {
             toast.error(`${name} is already in contacts`);
             return;
-        };     
+        };
         
         toast.success('Contact added!');
             
@@ -40,40 +40,43 @@ export const ContactForm = () => {
     };
 
     const handleSubmit = e => {
-        e.preventDefault();       
-        addContact(name, number);       
-        formReset();              
+        e.preventDefault();
+        addContact(name, number);
+        formReset();
     }
     
     return (
         <Form onSubmit={handleSubmit} autoComplete="off">
             <Field>
-                <Icon><FaUser /></Icon>
+                <Icon><FaUser size={ 22}/></Icon>
                 <Input
                     type="text"
                     placeholder="Name"
                     name="name"
                     value={name}
-                    onChange={handleNameChange}                    
+                    onChange={handleNameChange}
                     required
                 />
             </Field>
             <Field>
-                <Icon><FaPhoneAlt /></Icon>
+                <Icon><FaPhoneAlt size={ 22}/></Icon>
                 <Input
                     type="tel"
                     placeholder="Number"
                     name="number"
                     value={number}
-                    onChange={handleNumberChange}                    
+                    onChange={handleNumberChange}
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                     required
                 />
             </Field>
-            <Button type="submit">
-                {isLoading ? <Spinner size="36"/> : 'Add contact'}
-            </Button>
+            <Wrapper>
+                <Icon><FaPlus size={22} /></Icon>
+                <Button type="submit">
+                    {isLoading ? <Spinner size="36" /> : 'Add contact'}
+                </Button>
+            </Wrapper>             
         </Form>
-    )    
+    )
 }

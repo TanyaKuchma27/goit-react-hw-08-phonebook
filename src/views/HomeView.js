@@ -1,3 +1,4 @@
+import { Container, HomeTitle } from './view.styled';
 import phoneContact from 'img/phone-contact.png';
 
 const styles = {
@@ -22,12 +23,12 @@ const styles = {
 };
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
+  <Container>
+    <HomeTitle>
       <img src={phoneContact} alt="avatar" width="64" style={ styles.img}/>
       Welcome to contact service     
-    </h1>
-  </div>
+    </HomeTitle>
+  </Container>
 );
 
 export default HomeView;

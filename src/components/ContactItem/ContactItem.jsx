@@ -3,7 +3,7 @@ import { useDeleteContactMutation } from 'redux/contactsAPI';
 import { useNavigate } from 'react-router-dom';
 import { Wrapper, Left, Button } from './ContactItem.styled';
 import { Spinner } from 'components/Spinner';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaAddressBook, FaTrashAlt, FaPen } from 'react-icons/fa';
 
 
 export const ContactItem = ({ id, name, number }) => {   
@@ -13,24 +13,23 @@ export const ContactItem = ({ id, name, number }) => {
     return (
         <Wrapper>
             <Left>
-                {name}:  {number}
+                <FaAddressBook/> {name}:  {number}
             </Left>  
             <div>
                 <Button
                     type="button"
-                    onClick={() => deleteContact(id) }
-                    disabled={isDeleting}               
-                >
-                    {isDeleting && <Spinner size={12} />} 
-                  
-                <FaTrashAlt/>
+                    onClick={() => navigate(`/contacts/edit/${id}`)}                              
+                >                
+                    <FaPen />                    
                 </Button>
                 <Button
                     type="button"
-                    onClick={() => navigate(`/contacts/edit/${id}`)}                              
-                >                
-                Edit
-                </Button>
+                    onClick={() => deleteContact(id) }
+                    disabled={isDeleting}
+                    name="delete"
+                >
+                    {isDeleting ? <Spinner size={20}/> :  <FaTrashAlt />}                   
+                </Button>                
             </div>            
         </Wrapper>);
 };

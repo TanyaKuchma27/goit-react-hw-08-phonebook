@@ -1,22 +1,20 @@
-import { Container, Avatar, Name } from "./UserMenu.styled";
+import { Container, Name, Button } from "./UserMenu.styled";
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from 'redux/auth';
-import defaultAvatar from 'img/default-avatar.png';
-
+import { FaUserCircle } from 'react-icons/fa';
+import {IoExitOutline} from 'react-icons/io5';
 
 export const UserMenu = () => {    
     const name = useSelector(authSelectors.getUsername);
     const dispatch = useDispatch();
-    const avatar = defaultAvatar;
-
 
     return (
         <Container>
-            <Avatar src={avatar} alt="avatar" width="32" />
+            <FaUserCircle size={40} color={ '#2196f3'}/>
             <Name>Welcome, {name}</Name>
-            <button type="button" onClick={() => dispatch(authOperations.logOut())}>
-                Logout
-            </button>
+            <Button type="button" onClick={() => dispatch(authOperations.logOut())}>
+                <IoExitOutline size={ 36}/>
+            </Button>
         </Container>
     );
 };
