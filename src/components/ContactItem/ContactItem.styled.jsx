@@ -9,6 +9,11 @@ export const Left = styled.div`
   margin-right: 24px;
 `;
 
+export const Number = styled.a`
+  margin-left: 4px;
+  text-decoration: none;
+`;
+
 export const Button = styled.button`
 
   margin-left: 8px;

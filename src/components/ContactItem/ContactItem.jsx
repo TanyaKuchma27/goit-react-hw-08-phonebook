@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsAPI';
 import { useNavigate } from 'react-router-dom';
-import { Wrapper, Left, Button } from './ContactItem.styled';
+import { Wrapper, Left, Number, Button } from './ContactItem.styled';
 import { Spinner } from 'components/Spinner';
 import { FaAddressBook, FaTrashAlt, FaPen } from 'react-icons/fa';
 
@@ -13,7 +13,8 @@ export const ContactItem = ({ id, name, number }) => {
     return (
         <Wrapper>
             <Left>
-                <FaAddressBook/> {name}:  {number}
+                <FaAddressBook /> {name}:
+                <Number href="tel: {number}">{number}</Number>
             </Left>  
             <div>
                 <Button
