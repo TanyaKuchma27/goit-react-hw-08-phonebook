@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
 import { ContactForm } from 'components/ContactForm';
 import { ContactList } from 'components/ContactList';
 import { Filter } from 'components/Filter';
@@ -40,7 +39,6 @@ export default function ContactsView() {
         <Filter filter={filter} onChange={changeFilter} />
       )}
       <ContactList contacts={ visibleContacts }/>      
-      <Toaster position="top-center" />
     </>
   );
 }

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
+import toast from 'react-hot-toast';
 import { FaEnvelope, FaKey } from 'react-icons/fa';
 import { Container, Title, Form, Field, Icon, Input, Button } from './view.styled';
+import {useLogInMutation} from 'redux/authAPI'
 
-export default function LoginView() {
-  const dispatch = useDispatch();
+export default function LoginView() {    
+  const [login] = useLogInMutation(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -20,15 +20,19 @@ export default function LoginView() {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
+  const handleSubmit = async e => {
+    e.preventDefault();    
+    const logIn = await login({ email, password });     
+    if (logIn?.error) {
+      setPassword('');
+      return toast.error('You entered the wrong email or password, please try again');
+    }           
     setEmail('');
     setPassword('');
   };
 
   return (
-    <Container>
+    <Container>  
       <Title>Please login</Title>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Field>
@@ -36,7 +40,6 @@ export default function LoginView() {
           <Input type="email" placeholder="email" name="email"value={email}
             onChange={handleChange}/>
         </Field>
-
         <Field>
           <Icon><FaKey /></Icon>
           <Input type="password" placeholder="password" name="password"value={password}

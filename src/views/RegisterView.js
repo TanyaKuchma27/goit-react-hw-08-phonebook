@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authOperations } from 'redux/auth';
+import toast from 'react-hot-toast';
+import { useRegisterMutation } from 'redux/authAPI';
 import { FaUser, FaEnvelope, FaKey } from 'react-icons/fa';
 import { Container, Title, Form, Field, Icon, Input, Button } from './view.styled';
 
 export default function RegisterView() {
-  const dispatch = useDispatch();
+  const [register] = useRegisterMutation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,19 +23,21 @@ export default function RegisterView() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
+    const reg = await register({ name, email, password });   
+    if (reg?.error) {      
+      return toast.error('Please, check name and email and try again');
+    };  
     setName('');
     setEmail('');
     setPassword('');
   };
-
+ 
   return (
     <Container>
       <Title>Please register</Title>
       <Form onSubmit={handleSubmit} autoComplete="off">    
-        
         <Field>
           <Icon><FaUser /></Icon>
           <Input
@@ -47,7 +49,6 @@ export default function RegisterView() {
             required
           />
         </Field> 
-        
         <Field>
           <Icon><FaEnvelope /></Icon>
           <Input
@@ -59,19 +60,19 @@ export default function RegisterView() {
             required
           />
         </Field> 
-
         <Field>
           <Icon><FaKey /></Icon>
           <Input
             type="password"
             placeholder="password"
             name="password"
-            value={password}
+            value={password}            
+            pattern=".{7,}"
+            title="Seven or more characters"
             onChange={handleChange}
             required
           />
         </Field>     
-
         <Button type="submit">Register</Button>
       </Form> 
     </Container>

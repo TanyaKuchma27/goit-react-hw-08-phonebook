@@ -1,14 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, Suspense, lazy } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Suspense, lazy } from 'react';
 import { AppBar } from 'components/AppBar';
 import { EditContactModal } from 'components/EditContactModal';
 import { Spinner } from 'components/Spinner'
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
 import { Container, Loading } from './App.styled';
-import { authOperations, authSelectors } from 'redux/auth';
-
 
 const HomeView = lazy(() => import('views/HomeView'));
 const RegisterView = lazy(() => import('views/RegisterView'));
@@ -17,23 +14,15 @@ const ContactsView = lazy(() => import('views/ContactsView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
-  useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
-
-  return isFetchingCurrentUser ? (
-      <Loading><Spinner size={80}/></Loading>
-  ) : (
-      <Container>
+  return (
+    <Container>
         <AppBar />
         <Suspense fallback={<Loading><Spinner size={80}/></Loading>}>
           <Routes>            
             <Route path="/" element={<HomeView />}/>
             <Route path="register" element={
-              <PublicRoute restricted>
+              <PublicRoute redirectTo="/contacts" restricted>
                 <RegisterView />
               </PublicRoute>
             }
@@ -54,5 +43,5 @@ export const App = () => {
           </Routes>
         </Suspense>        
       </Container>
-  )   
+  ) 
 }

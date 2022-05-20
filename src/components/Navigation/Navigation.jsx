@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/auth';
+import { getIsLoggedIn } from 'redux/authSlice';
 import { Link } from './Navigation.styled';
 
 export const Navigation = () => {
-    const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+    const isLoggedIn = useSelector(getIsLoggedIn);
     return (
         <nav>
             {isLoggedIn ? (
