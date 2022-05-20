@@ -6,7 +6,7 @@ export default function HomeView() {
     <Container>
       <HomeTitle>
         <img src={phoneContact} alt="avatar" width="64" />
-        Welcome to contact service
+        Welcome to contact service!
       </HomeTitle>
     </Container>
   );
