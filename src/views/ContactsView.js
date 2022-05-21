@@ -38,7 +38,7 @@ export default function ContactsView() {
       {(contacts?.length > 1) && (
         <Filter filter={filter} onChange={changeFilter} />
       )}
-      <ContactList contacts={ visibleContacts }/>      
+      <ContactList contacts={ visibleContacts }/>
     </>
   );
 }

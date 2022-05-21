@@ -1,10 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
+import { useSelector } from 'react-redux';
 import { AppBar } from 'components/AppBar';
 import { EditContactModal } from 'components/EditContactModal';
 import { Spinner } from 'components/Spinner'
 import { PrivateRoute } from 'components/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute';
+import { getToken } from 'redux/authSlice';
+import { useGetUserQuery } from 'redux/authAPI';
 import { Container, Loading } from './App.styled';
 
 const HomeView = lazy(() => import('views/HomeView'));
@@ -14,6 +17,8 @@ const ContactsView = lazy(() => import('views/ContactsView'));
 const NotFoundView = lazy(() => import('views/NotFoundView'));
 
 export const App = () => {
+  const token = useSelector(getToken);
+  useGetUserQuery(null, { skip: !token });
 
   return (
     <Container>
