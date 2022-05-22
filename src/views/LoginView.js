@@ -37,13 +37,27 @@ export default function LoginView() {
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Field>
           <Icon><FaEnvelope /></Icon>
-          <Input type="email" placeholder="email" name="email"value={email}
-            onChange={handleChange}/>
+          <Input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
         </Field>
         <Field>
           <Icon><FaKey /></Icon>
-          <Input type="password" placeholder="password" name="password"value={password}
-            onChange={handleChange}/>
+          <Input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={password}            
+            pattern=".{7,}"
+            title="Seven or more characters"
+            onChange={handleChange}
+            required
+          />
         </Field> 
         <Button type="submit">Login</Button>        
       </Form>      
